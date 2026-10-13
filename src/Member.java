@@ -1,9 +1,9 @@
-public class Memeber {
+public class Member {
     private int memberId;
     private String name;
 
 
-    public  Memeber(int memberId, String name) {
+    public Member(int memberId, String name) {
         this.memberId = memberId;
         this.name = name;
     }

@@ -45,22 +45,35 @@ public class Main {
 
                Book book = new Book(title, author, isbn);
                library.addBook(book);
-               System.out.println("Booke added successfully!");
+               System.out.println("Book added successfully!");
                break;
            case 2:
+               System.out.println();
                System.out.println("Showing all books");
                library.viewBooks();
                break;
            case 3:
+               sc.nextLine();
                System.out.println("Write name of the book that you want to find: ");
                String name = sc.nextLine();
                library.searchBook(name);
-               System.out.println("Book " + name + " was found!");
                break;
+           case 4:
+               sc.nextLine();
+
+               System.out.println("Write your member id: ");
+               int memberId = sc.nextInt();
+
+               System.out.println("Write your name: ");
+               String memberName = sc.nextLine();
+
+               Member member = new Member(memberId, memberName);
+               System.out.println("You successfully registered");
 
 
        }
 
 
+       return false;
    }
 }

@@ -8,7 +8,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.isAvailable = false;
+        this.isAvailable = true;
     }
 
     public void setAvailable(boolean available) {
@@ -18,10 +18,20 @@ public class Book {
     public String getTitle() {
         return title;
     }
+
     public String getAuthor() {
         return author;
     }
+
     public String getIsbn() {
         return isbn;
+    }
+
+    public boolean getIsAvailable() {
+        return isAvailable;
+    }
+
+    public String toString(){
+        return "Title: "+ title + " Author: " + author + " ISBN: " + isbn;
     }
 }
