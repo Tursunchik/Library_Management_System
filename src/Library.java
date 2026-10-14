@@ -28,12 +28,35 @@ public class Library {
         }
    }
 
-   public void BorrowBook(Book book) {
-        if(book.getIsAvailable() == false){
-            System.out.println("Book " + book.getTitle() + " was not borrowed!");
-        } else {
-            System.out.println("Book " + book.getTitle() + " borrowed!");
+   public void borrowBook(String ISBN) {
+        for (Book book : books) {
+            if(book.getIsbn().equalsIgnoreCase(ISBN)){
+                if(!book.getIsAvailable()){
+                    System.out.println("Book " + book.getTitle() + " is not available!");
+                }else{
+                    book.setIsAvailable(false);
+                    System.out.println("Book " + book.getTitle()+ " is available!");
+                }
+            } else{
+                System.out.println("Book " + book.getIsbn() + " not found!");
+            }
+            return;
         }
+   }
 
+   public void returnBook(String ISBN) {
+        for (Book book : books) {
+            if(book.getIsbn().equalsIgnoreCase(ISBN)){
+                if(!book.getIsAvailable()){
+                    book.setIsAvailable(true);
+                    System.out.println("Book " + book.getTitle() + " is successfully returned!");
+                }else {
+                    System.out.println("Book " + book.getTitle() + " is already returned!");
+                }
+            }else{
+                System.out.println("Book " + book.getIsbn() + " not found!");
+            }
+        }
+        return;
    }
 }

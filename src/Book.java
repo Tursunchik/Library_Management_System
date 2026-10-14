@@ -27,6 +27,10 @@ public class Book {
         return isbn;
     }
 
+    public void setIsAvailable(boolean available) {
+        this.isAvailable = available;
+    }
+
     public boolean getIsAvailable() {
         return isAvailable;
     }

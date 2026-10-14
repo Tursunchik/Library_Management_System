@@ -69,6 +69,16 @@ public class Main {
 
                Member member = new Member(memberId, memberName);
                System.out.println("You successfully registered");
+               break;
+           case 5:
+               sc.nextLine();
+               System.out.println("---------------------");
+               System.out.println("Write an ISBN of the book that you want to borrow: ");
+               System.out.println("---------------------");
+               String bookIsbn = sc.nextLine();
+               library.borrowBook(bookIsbn);
+               break;
+           case 6:
 
 
        }
