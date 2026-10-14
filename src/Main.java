@@ -11,7 +11,7 @@ public class Main {
                 showMenu();
                 int choice = sc.nextInt();
 
-                finish = handleChoice(choice, library , sc);
+                finish = handleChoice(choice, library , sc ,finish);
 
             } while (!finish);
         }
@@ -29,7 +29,7 @@ public class Main {
         System.out.print("Choose an option: ");
     }
 
-   public static boolean handleChoice(int choice, Library library , Scanner sc) {
+   public static boolean handleChoice(int choice, Library library , Scanner sc , boolean finish) {
        switch (choice) {
            case 1:
                sc.nextLine();
@@ -50,6 +50,7 @@ public class Main {
            case 2:
                System.out.println();
                System.out.println("Showing all books");
+               System.out.println("---------------------");
                library.viewBooks();
                break;
            case 3:
@@ -59,31 +60,45 @@ public class Main {
                library.searchBook(name);
                break;
            case 4:
-               sc.nextLine();
-
-               System.out.println("Write your member id: ");
+               System.out.println("Write your member ID: ");
                int memberId = sc.nextInt();
+               sc.nextLine();
 
                System.out.println("Write your name: ");
                String memberName = sc.nextLine();
 
                Member member = new Member(memberId, memberName);
-               System.out.println("You successfully registered");
+               library.registerMember(member);
+
+               System.out.println("You successfully registered!");
                break;
            case 5:
                sc.nextLine();
                System.out.println("---------------------");
                System.out.println("Write an ISBN of the book that you want to borrow: ");
                System.out.println("---------------------");
-               String bookIsbn = sc.nextLine();
-               library.borrowBook(bookIsbn);
+               String bookBorrow = sc.nextLine();
+               library.borrowBook(bookBorrow);
                break;
            case 6:
-
+               sc.nextLine();
+               System.out.println("---------------------");
+               System.out.println("Write an ISBN of the book that you want to return: ");
+               System.out.println("---------------------");
+               String bookReturn = sc.nextLine();
+               library.returnBook(bookReturn);
+               break;
+           case 7:
+               System.out.println("Thank you for using Library Management System!");
+               finish = true;
+               break;
+           default:
+               System.out.println("---------------------");
+               System.out.println("Invalid choice!");
 
        }
 
 
-       return false;
+       return finish;
    }
 }

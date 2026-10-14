@@ -1,4 +1,4 @@
-import java.lang.reflect.Member;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,46 +17,61 @@ public class Library {
         }
 
    }
-   public void searchBook(String name) {
+    public void searchBook(String keyword) {
+        boolean found = false;
         for (Book book : books) {
-            if(name.equals(book.getTitle())){
-                System.out.println("Book " + name + " was found!");
-
-            } else{
-                System.out.println("Book " + name + " not found!");
+            if (book.getTitle().toLowerCase().contains(keyword.toLowerCase())) {
+                System.out.println("Found -> " + book);
+                found = true;
             }
         }
-   }
 
-   public void borrowBook(String ISBN) {
+        if (!found) {
+            System.out.println("Book not found!");
+        }
+    }
+
+
+    public void borrowBook(String ISBN) {
         for (Book book : books) {
-            if(book.getIsbn().equalsIgnoreCase(ISBN)){
-                if(!book.getIsAvailable()){
+            if (book.getIsbn().equalsIgnoreCase(ISBN)) {
+
+                if (!book.getIsAvailable()) {
                     System.out.println("Book " + book.getTitle() + " is not available!");
-                }else{
+                } else {
                     book.setIsAvailable(false);
-                    System.out.println("Book " + book.getTitle()+ " is available!");
+                    System.out.println("Book " + book.getTitle() + " borrowed successfully!");
                 }
-            } else{
-                System.out.println("Book " + book.getIsbn() + " not found!");
-            }
-            return;
-        }
-   }
 
-   public void returnBook(String ISBN) {
+                return;
+            }
+        }
+
+        System.out.println("Book with ISBN " + ISBN + " not found!");
+    }
+
+
+
+    public void returnBook(String ISBN) {
         for (Book book : books) {
-            if(book.getIsbn().equalsIgnoreCase(ISBN)){
-                if(!book.getIsAvailable()){
+            if (book.getIsbn().equalsIgnoreCase(ISBN)) {
+
+                if (!book.getIsAvailable()) {
                     book.setIsAvailable(true);
-                    System.out.println("Book " + book.getTitle() + " is successfully returned!");
-                }else {
+                    System.out.println("Book " + book.getTitle() + " returned successfully!");
+                } else {
                     System.out.println("Book " + book.getTitle() + " is already returned!");
                 }
-            }else{
-                System.out.println("Book " + book.getIsbn() + " not found!");
+
+                return;
             }
         }
-        return;
-   }
+
+        System.out.println("Book with ISBN " + ISBN + " not found!");
+    }
+
+    public void registerMember(Member member) {
+        members.add(member);
+    }
+
 }
